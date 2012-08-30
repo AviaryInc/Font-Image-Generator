@@ -1,0 +1,18 @@
+{
+	"defaults"	:	{
+		"color"		:	"#0f0"
+
+	},
+	"textImages"	:	[
+		{
+			"text"		:	"Hello world in red",
+			"fontName"	:	"Impact",
+			"fontSize"	:	15,
+			"color"		:	"#f00"
+		},
+		{
+			"text"		:	"Hello world in green",
+			"fontSize"	:	100
+		}
+	]
+}
