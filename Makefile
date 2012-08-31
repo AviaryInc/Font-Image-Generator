@@ -1,6 +1,8 @@
 SOURCE = ./source.json
 BUILD_DIR = ./build/
 
+all: clean build
+
 build:
 	./node_modules/.bin/coffee canvas.coffee $(SOURCE) $(BUILD_DIR)
 
@@ -9,7 +11,5 @@ install:
 
 clean:
 	rm -rf ${BUILD_DIR}*.png
-
-all: clean build
 
 .PHONY: all build clean
