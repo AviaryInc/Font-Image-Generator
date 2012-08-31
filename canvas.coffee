@@ -33,6 +33,7 @@ if not sourceFile
 
 
 defaultTextImageData = 
+	text : ""
 	fontName : "Arial"
 	fontSize : 12
 	fontWeight : "normal"
@@ -63,13 +64,20 @@ outputCanvasToPNG = (canvas, filepath) ->
 
 makeFileNameFromData = (options = {}) ->
 	options = extendByCopy(defaultTextImageData, options)
-	"#{ options.fontWeight }_#{ options.fontSize }_#{ options.fontName.toLowerCase().replace(/\ /g, "_") }_#{ options.text.toLowerCase().replace(/\ /g, "_") }"
+	nameAndText = options.fontName
+	if options.text
+		nameAndText += "_#{ options.text }"
+	nameAndText = nameAndText.toLowerCase().replace(/\ /g, "_")
+
+	"#{ options.fontWeight }_#{ options.fontSize }_#{ nameAndText }"
 
 makeFilePath = (filename, dir = "") ->
 	__dirname + "/" + dir + filename + ".png"
 
 makeCanvasWithText = (options = {}) ->
 	options = extendByCopy(defaultTextImageData, options)
+
+	text = options.text or options.fontName
 
 	# doubling because half of the stroke is
 	# overwritten by a fill to make a true "outline"
@@ -81,7 +89,7 @@ makeCanvasWithText = (options = {}) ->
 
 	# measure text
 	ctx.font = options.fontWeight + " " + options.fontSize + "px \"" + options.fontName + "\""
-	m = ctx.measureText(options.text)
+	m = ctx.measureText(text)
 
 	# ...like right here
 	w = canvas.width = m.actualBoundingBoxRight - m.actualBoundingBoxLeft + options.padding * 2
@@ -94,9 +102,9 @@ makeCanvasWithText = (options = {}) ->
 	if options.outlineColor
 		ctx.lineWidth = options.outlineWidth
 		ctx.strokeStyle = options.outlineColor
-		ctx.strokeText options.text, options.padding, m.actualBoundingBoxAscent + options.padding
+		ctx.strokeText text, options.padding, m.actualBoundingBoxAscent + options.padding
 	ctx.fillStyle = options.color
-	ctx.fillText options.text, options.padding, m.actualBoundingBoxAscent + options.padding
+	ctx.fillText text, options.padding, m.actualBoundingBoxAscent + options.padding
 
 	canvas
 

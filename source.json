@@ -13,6 +13,10 @@
 		{
 			"text"		:	"Hello world in green",
 			"fontSize"	:	100
+		},
+		{
+			"fontName"	:	"Times New Roman",
+			"fontSize"	:	100
 		}
 	]
 }
