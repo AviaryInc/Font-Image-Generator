@@ -80,7 +80,7 @@ makeCanvasWithText = (options = {}) ->
 	ctx = canvas.getContext("2d")
 
 	# measure text
-	ctx.font = options.fontWeight + " " + options.fontSize + "px " + options.fontName
+	ctx.font = options.fontWeight + " " + options.fontSize + "px \"" + options.fontName + "\""
 	m = ctx.measureText(options.text)
 
 	# ...like right here
@@ -90,7 +90,7 @@ makeCanvasWithText = (options = {}) ->
 	# draw text
 	# have to re-state font property after clearing canvas when
 	# size changed
-	ctx.font = options.fontWeight + " " + options.fontSize + "px " + options.fontName
+	ctx.font = options.fontWeight + " " + options.fontSize + "px \"" + options.fontName + "\""
 	if options.outlineColor
 		ctx.lineWidth = options.outlineWidth
 		ctx.strokeStyle = options.outlineColor
