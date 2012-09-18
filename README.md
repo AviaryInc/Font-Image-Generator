@@ -4,9 +4,16 @@ This is a font image generator using [NodeJS](http://nodejs.org) and [node-canva
 
 ## Installation
 
+Unless previously installed you'll _need_ __Cairo__. For system-specific installation view the node-canvas [Wiki](https://github.com/LearnBoost/node-canvas/wiki/_pages) or use **homebrew**:
+
+	$ brew install cairo
+	$ brew link cairo
+	$ brew link pixman	
+
+Now install the node packages:
+
     $ make install
 
-Unless previously installed you'll _need_ __Cairo__. For system-specific installation view the node-canvas [Wiki](https://github.com/LearnBoost/node-canvas/wiki/_pages).
 
 ## Running it
 
